@@ -1,0 +1,21 @@
+schema:
+- name: backend
+  path: ./
+  commands:
+    install:
+      status: true
+      method: go install ./...
+    build:
+      status: true
+      method: go build -o ./bin/backend
+    run:
+      status: true
+      method: /go/bin/backend
+  watcher:
+    paths:
+    - /
+    extensions:
+    - go
+    ignored_paths:
+    - .git
+    - .realize

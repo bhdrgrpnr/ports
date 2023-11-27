@@ -1,0 +1,23 @@
+version: "3.4"
+services:
+  saasbackend:
+    build: .
+    working_dir: /env/backend
+    command: sh -c "/wait && realize start"
+    volumes:
+      - ./:/env
+      - go_cache:/go/pkg/mod
+      - go_mod_cache:/root/.cache/go-build
+      - go_bin:/go/bin
+    ports:
+      - 8000:8000
+    networks:
+      - services
+
+networks:
+  services:
+
+volumes:
+  go_mod_cache:
+  go_cache:
+  go_bin:
